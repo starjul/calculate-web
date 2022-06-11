@@ -11,7 +11,7 @@
   width: 200px;
 }
 
-#inputNumber{
+#inputNumber {
   width: 70%;
 }
 
@@ -20,7 +20,6 @@
   min-width: 100px;
   border-left: 2px solid black;
   border-right: 2px solid black;
-
 }
 
 .result {
@@ -31,4 +30,10 @@
   .App {
     background-color: paleturquoise;
   }
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
