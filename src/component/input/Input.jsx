@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from "react";
+// import React, { useState} from "react";
+import React from "react";
 
-const Input = () => {
-  const [data, setData] = useState("");
+const Input = ({ data, handleChange }) => {
+  // const [data, setData] = useState("");
 
-  const handleChange = (e) => {
- 
-    let x = e.target.value;
-    let y = Number(x);
+  // const handleChange = (e) => {
+  //   let x = e.target.value;
+  //   let y = Number(x);
 
-    if (x.length > 0) {
-      setTimeout(() => {
-        if (y > 0) {
-          setData(Math.round(x));
-        } else if (y < 0) {
-          setData(1);
-        } else {
-          setData(null);
-        }
-        console.log("x", x);
-      }, 1000);
-    }
-  };
+  //   if (x.length > 0) {
+  //     setTimeout(() => {
+  //       if (y > 0) {
+  //         setData(Math.round(x));
+  //       } else if (y < 0) {
+  //         setData(1);
+  //       } else {
+  //         setData(null);
+  //       }
+  //       console.log("x", x);
+  //     }, 1000);
+  //   }
+  // };
 
   return (
     <div>

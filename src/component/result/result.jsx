@@ -1,37 +1,58 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-const Result = () => {
-    const val = Number(document.getElementById("inputNumber"));
-    const selected = document.getElementsByTagName("option");
-    console.log("val",val)
+const Result = ({ value, typeSelected }) => {
+  const [result, setResult] = useState(false);
 
-    function isPrime() {
-        if (val === 2) {
-            return true;
-        } else if (val > 1) {
-            for (let i = 2; i < i +1; i++) {
-                if (val % i !== 0) {
-                    return true;
-                } else if (val === i * i) {
-                    return false;
-                } else {
-                    return false;
-                }
-            }
+  function isPrime(value) {
+    if (value === 1) {
+      return false;
+    } else if (value === 2) {
+      return true;
+    } else {
+      for (let i = 2; i < value; i++) {
+        if (value % i === 0) {
+          return false;
         } else {
-            return false;
+          return true;
         }
-        return true
+      }
     }
-    console.log(isPrime())
+  }
 
-    if (selected === "isPrime") {
-        return document.getElementById("test").innerHTML = isPrime(val);
-    } else if (selected === "isFibonacci") {
-        return 
+  function isFibonacci(value) {
+    if (value === 1 || value === 2) {
+      return true;
+    } else if (value > 1) {
+      let fibo = [1, 1, 2];
+      for (let i = 1; i < value; i++) {
+        let x = fibo[i] + fibo[i + 1];
+        fibo.push(x);
+      }
+      const found = fibo.find((element) => element === value);
+      if (found) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
     }
+  }
 
-    return <div id="test"></div>;
+  useEffect(() => {
+    if (typeSelected === "isPrime") {
+      setResult(isPrime(value));
+    } else if (typeSelected === "isFibonacci") {
+      setResult(isFibonacci(value));
+    }
+  }, [typeSelected, value]);
+
+  return (
+    <>
+      <h4>Result</h4>
+      <div id="test">{result?.toString()}</div>
+    </>
+  );
 };
 
 export default Result;
